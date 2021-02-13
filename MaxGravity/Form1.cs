@@ -13,10 +13,12 @@ namespace MaxGravity
     public partial class Form1 : Form
     {
         Graphics graphics;
+        Thread th;
+        bool StartSimulation = false;
         int mainFrame = 4;
         int mainWidth = 500;
         int mainHight = 500;
-        Queue<objectData> listOfObjects;
+        List<objectData> listOfObjects;
 
         private struct speedVector
         {
@@ -30,6 +32,17 @@ namespace MaxGravity
         }
         private struct objectData
         {
+            public objectData(string name, float x, float y, speedVector v, bool blocked, float r, float m, Color color)
+            {
+                this.name = name;
+                this.x = x;
+                this.y = y;
+                this.v = v;
+                this.blocked = blocked;
+                this.r = r;
+                this.m = m;
+                this.color = color;
+            }
             public string name;
             public float x;
             public float y;
@@ -43,13 +56,19 @@ namespace MaxGravity
         public Form1()
         {
             InitializeComponent();
-            listOfObjects = new Queue<objectData>();
+            th = new Thread(CalculatePosition);
+            th.IsBackground = true;
+            th.Start();
+
+            listOfObjects = new List<objectData>();
             graphics = CreateGraphics();
             this.SetClientSizeCore(mainWidth + button1.Width + mainFrame * 2 + 5, mainHight + mainFrame * 2);
 
 
             button1.Left = mainWidth + mainFrame + 5;
             button1.Top = mainFrame + 2;
+            button2.Left = mainWidth + mainFrame + 5;
+            button2.Top = mainFrame + 30;
         }
         private void AddObject(string name, float x, float y, speedVector v, bool blocked, float r, float m, Color color)
         {
@@ -62,39 +81,85 @@ namespace MaxGravity
             temp.r = r;
             temp.m = m;
             temp.color = color;
-            listOfObjects.Enqueue(temp);
+            listOfObjects.Add(temp);
+        }
+        private void ClearBlack()
+        {
+            graphics.FillRectangle(Brushes.Black, mainFrame + 1, mainFrame + 1, mainWidth, mainHight);
         }
         private void ShowObjects()
         {
-            graphics.DrawRectangle(Pens.Gray, mainFrame, mainFrame, mainWidth + 1, mainHight + 1);
-            graphics.FillRectangle(Brushes.Black, mainFrame+1, mainFrame+1, mainWidth, mainHight);
-
+            ClearBlack();
             foreach (objectData i in listOfObjects)
             {
                 graphics.FillEllipse(new SolidBrush(i.color), i.x - i.r, i.y - i.r, 2 * i.r, 2 * i.r);
                 Console.WriteLine("Rysowanie - " + i.name);
             }
         }
+        private void CalculatePosition()
+        {
+            for (; ; )
+            {
+                if (StartSimulation)
+                {
+                    for (var i = 0; i < listOfObjects.Count; i++)
+                    {
+                        listOfObjects[i] = new objectData(
+                            listOfObjects[i].name,
+                            listOfObjects[i].x + listOfObjects[i].v.x,
+                            listOfObjects[i].y + listOfObjects[i].v.y,
+                            listOfObjects[i].v,
+                            listOfObjects[i].blocked,
+                            listOfObjects[i].r,
+                            listOfObjects[i].m,
+                            listOfObjects[i].color);
+                    }
+
+                    //------------- show -------------
+                    ShowObjects();
+                }
+                Thread.Sleep(20);
+            }
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-         
-            ShowObjects();
+             StartSimulation = true;
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            bool restart = false;
+            if (StartSimulation)
+            {
+                StartSimulation = false;
+                restart = true;
+            }
+            graphics.DrawRectangle(Pens.Gray, mainFrame, mainFrame, mainWidth + 1, mainHight + 1);
+            ClearBlack();
             ShowObjects();
+            if (restart)
+            {
+                StartSimulation = true;
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //thread.Abort();
+            if (th.IsAlive)
+            {
+                th.Abort();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             //-----------------------------------
-            AddObject("Słońce", 300, 170, new speedVector(0, 0), true, 8, 3000, Color.DarkOrange);
+            AddObject("Słońce", 300, 170, new speedVector(0, 0), true, 8, 3000, Color.Yellow);
             AddObject("Ziemia", 250, 150, new speedVector(2, 0), false, 3, 3, Color.Blue);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            StartSimulation = false;
         }
     }
 }
