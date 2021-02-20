@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1340
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxGravity", "MaxGravity\MaxGravity.csproj", "{FE11550F-28CE-4DD6-AABE-2D5185080E68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxGravity", "MaxGravity\MaxGravity.csproj", "{8A6087A2-6517-471A-9C1D-F218EBDC95F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE11550F-28CE-4DD6-AABE-2D5185080E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE11550F-28CE-4DD6-AABE-2D5185080E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE11550F-28CE-4DD6-AABE-2D5185080E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE11550F-28CE-4DD6-AABE-2D5185080E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6087A2-6517-471A-9C1D-F218EBDC95F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6087A2-6517-471A-9C1D-F218EBDC95F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6087A2-6517-471A-9C1D-F218EBDC95F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6087A2-6517-471A-9C1D-F218EBDC95F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {41DA883A-405A-4206-BAB6-94A8DF76DF26}
+		SolutionGuid = {0CB5FC5D-A8E9-43F3-9FCB-0B8D802BE80C}
 	EndGlobalSection
 EndGlobal
