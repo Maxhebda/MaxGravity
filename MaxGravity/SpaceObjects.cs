@@ -12,6 +12,7 @@ namespace MaxGravity
     class SpaceObjects
     {
         private List<SpaceObject> data;
+        private UInt32 IdNumber = 0;
         public SpaceObjects()
         {
             data = new List<SpaceObject>();
@@ -19,6 +20,10 @@ namespace MaxGravity
         public List<SpaceObject> GetList()
         {
             return data;
+        }
+        public void AddObject(SpaceObject o)
+        {
+            data.Add(o);
         }
     }
 }
