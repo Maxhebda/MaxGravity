@@ -12,12 +12,11 @@ namespace MaxGravity
     /// </summary>
     class SpaceObject
     {
-        private static UInt32 identyficator = 0;
 
         /// <summary>
         /// Single object in the universe has name, x, y, mass, velocity, radius, color identifier and direction/velocity of flight, setting a lock
         /// </summary>
-        public SpaceObject(string objectName, Position position, float mass, float radius, Color color, DirectionVector velocity, bool blocked)
+        public SpaceObject(string objectName, Position position, double mass, double radius, Color color, DirectionVector velocity, bool blocked)
         {
             this.name = objectName;
             this.p = position;
@@ -26,14 +25,13 @@ namespace MaxGravity
             this.c = color;
             this.v = velocity;
             this.blocked = blocked;
-            identyficator++;
-            this.ID = identyficator;
+            this.forceOfGravity = new DirectionVector();
         }
 
         /// <summary>
         /// Single object in the universe has name, x, y, mass, velocity, radius, color identifier and direction/velocity of flight, NO blockade!
         /// </summary>
-        public SpaceObject(string objectName, Position position, float mass, float radius, Color color, DirectionVector velocity)
+        public SpaceObject(string objectName, Position position, double mass, double radius, Color color, DirectionVector velocity)
         {
             this.name = objectName;
             this.p = position;
@@ -42,17 +40,7 @@ namespace MaxGravity
             this.c = color;
             this.v = velocity;
             this.blocked = false;
-            identyficator++;
-            this.ID = identyficator;
-        }
-
-        /// <summary>
-        /// a unique identification number
-        /// </summary>
-        public UInt32 ID
-        {
-            get;
-            private set;
+            this.forceOfGravity = new DirectionVector();
         }
 
         /// <summary>
@@ -94,7 +82,7 @@ namespace MaxGravity
         /// <summary>
         /// object radius
         /// </summary>
-        public float r
+        public double r
         {
             get;
             private set;
@@ -124,7 +112,7 @@ namespace MaxGravity
         public DirectionVector forceOfGravity
         {
             get;
-            private set;
+            set;
         }
     }
 }

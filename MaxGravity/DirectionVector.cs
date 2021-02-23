@@ -14,7 +14,7 @@ namespace MaxGravity
         /// <summary>
         /// vector x,y direction
         /// </summary>
-        public DirectionVector(float xVector, float yVector)
+        public DirectionVector(double xVector, double yVector)
         {
             vectorPoint = new Position(xVector, yVector);
         }

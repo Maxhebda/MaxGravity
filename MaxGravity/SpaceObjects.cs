@@ -11,19 +11,29 @@ namespace MaxGravity
     /// </summary>
     class SpaceObjects
     {
-        private List<SpaceObject> data;
-        private UInt32 IdNumber = 0;
+        private SpaceObject[] data;
+        public int count
+        {
+            get;
+            private set;
+        }
         public SpaceObjects()
         {
-            data = new List<SpaceObject>();
+            data = new SpaceObject[1000];
+            count = 0;
         }
-        public List<SpaceObject> GetList()
+        public SpaceObject[] GetList()
         {
             return data;
         }
         public void AddObject(SpaceObject o)
         {
-            data.Add(o);
+            data[count] = o;
+            count++;
+        }
+        public void setForceOfGravity(int index, DirectionVector forceOfGravity)
+        {
+            data[index].forceOfGravity = forceOfGravity;
         }
     }
 }

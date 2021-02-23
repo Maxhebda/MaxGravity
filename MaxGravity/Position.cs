@@ -8,7 +8,7 @@ namespace MaxGravity
 {
     class Position
     {
-        public Position (float x, float y)
+        public Position (double x, double y)
         {
             this.x = x;
             this.y = y;
@@ -18,12 +18,12 @@ namespace MaxGravity
             this.x = p.x;
             this.y = p.y;
         }
-        public float x
+        public double x
         {
             get;
             set;
         }
-        public float y
+        public double y
         {
             get;
             set;

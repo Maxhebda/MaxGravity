@@ -18,9 +18,18 @@ namespace MaxGravity
             InitializeComponent();
             engine = new GraphicsEngine(panel2);
 
-            engine.AddSpaceObject(new SpaceObject("Sun",   new Position(150, 150), 1000, 15, Color.Yellow, new DirectionVector(), true));
-            engine.AddSpaceObject(new SpaceObject("Earth", new Position(150, 100),   20,  5, Color.Blue  , new DirectionVector(4,0)));
-            engine.AddSpaceObject(new SpaceObject("Mars",  new Position(230, 150),   10,  4, Color.Red   , new DirectionVector(1, 5)));
+            engine.AddSpaceObject(new SpaceObject("Sun2", new Position(1350, 250),     2000000,   12, Color.YellowGreen,     new DirectionVector(), true));
+            engine.AddSpaceObject(new SpaceObject("Sun",     new Position(350, 250),  20000000,   15, Color.YellowGreen,     new DirectionVector(), true));
+            //engine.AddSpaceObject(new SpaceObject("Mercury", new Position(350, 280),     10000,    2, Color.White,           new DirectionVector(2.3f, 0)));
+            engine.AddSpaceObject(new SpaceObject("Venus",   new Position(350, 340),     81000,    6, Color.White,           new DirectionVector(1.1f, 0)));
+            engine.AddSpaceObject(new SpaceObject("VenMoon", new Position(350, 330),      1000,    1, Color.White,           new DirectionVector(1.33f, 0)));
+            //engine.AddSpaceObject(new SpaceObject("VenMoon", new Position(350, 325),      2000,    2, Color.Yellow,          new DirectionVector(1.35f, 0.1f)));
+
+            engine.AddSpaceObject(new SpaceObject("Earth",   new Position(350, 450),     70000,    5, Color.Blue   ,         new DirectionVector(0.7f, 0)));
+            engine.AddSpaceObject(new SpaceObject("Moon",    new Position(350, 440),      1000,    1, Color.White  ,         new DirectionVector(0.9f, 0)));
+
+
+            engine.CalculateForceOfGravity();
             label2.Text = panel2.Width + "/" + panel2.Height;
         }
 
