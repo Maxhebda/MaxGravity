@@ -17,6 +17,12 @@ namespace MaxGravity
             get;
             private set;
         }
+
+        public void Clear()
+        {
+            count = 0;
+        }
+
         public SpaceObjects()
         {
             data = new SpaceObject[1000];

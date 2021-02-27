@@ -33,10 +33,15 @@
             this.animacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualisationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doNotCleanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.showObjectNamesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +50,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuToolStripMenuItem});
+            this.menuToolStripMenuItem,
+            this.visualisationToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -66,7 +72,9 @@
             // 
             this.animacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startToolStripMenuItem,
-            this.stopToolStripMenuItem});
+            this.stopToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.resetToolStripMenuItem});
             this.animacjaToolStripMenuItem.Name = "animacjaToolStripMenuItem";
             this.animacjaToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.animacjaToolStripMenuItem.Text = "Animacja";
@@ -74,16 +82,44 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 6);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.resetToolStripMenuItem.Text = "Reset object values";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
+            // visualisationToolStripMenuItem
+            // 
+            this.visualisationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.doNotCleanToolStripMenuItem,
+            this.showObjectNamesToolStripMenuItem});
+            this.visualisationToolStripMenuItem.Name = "visualisationToolStripMenuItem";
+            this.visualisationToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.visualisationToolStripMenuItem.Text = "Visualisation";
+            // 
+            // doNotCleanToolStripMenuItem
+            // 
+            this.doNotCleanToolStripMenuItem.Name = "doNotCleanToolStripMenuItem";
+            this.doNotCleanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doNotCleanToolStripMenuItem.Text = "Do not clean";
+            this.doNotCleanToolStripMenuItem.Click += new System.EventHandler(this.doNotCleanToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -126,6 +162,13 @@
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             this.panel2.Resize += new System.EventHandler(this.panel2_Resize);
             // 
+            // showObjectNamesToolStripMenuItem
+            // 
+            this.showObjectNamesToolStripMenuItem.Name = "showObjectNamesToolStripMenuItem";
+            this.showObjectNamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showObjectNamesToolStripMenuItem.Text = "Show object names";
+            this.showObjectNamesToolStripMenuItem.Click += new System.EventHandler(this.showObjectNamesToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +203,11 @@
         private System.Windows.Forms.ToolStripMenuItem animacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem visualisationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doNotCleanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showObjectNamesToolStripMenuItem;
     }
 }
 

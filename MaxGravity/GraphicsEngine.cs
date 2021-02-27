@@ -12,6 +12,7 @@ namespace MaxGravity
     {
         private Graphics handleWindows;
         private Font defaultFont = new Font("Candara", 8, FontStyle.Regular);
+        private bool clearBackgroundOnce = false;
 
         private double constantOfGravity = 0.0000000016f;
 
@@ -20,6 +21,44 @@ namespace MaxGravity
         private Thread thread;
         private bool startThread = false;
         private bool startAnimation = false;
+
+        private bool _clearBackground = true;
+        /// <summary>
+        /// Cleaning before drawing
+        /// true  = The animations (orbits) will be cleared.
+        /// false = Objects will move without clearing the old position.
+        /// </summary>
+        public bool ClearBackground
+        {
+            get => _clearBackground;
+            set
+            {
+                if (!value)     //if it doesn't clear the screen then it doesn't display the names of the objects
+                {
+                    _showObjectNames = false;
+                }
+                _clearBackground = value;
+            }
+        }
+
+        private bool _showObjectNames = false;
+        /// <summary>
+        /// Show object names
+        /// true  = Show names and disable clearing the old position
+        /// false = Not show names
+        /// </summary>
+        public bool ShowObjectNames
+        {
+            get => _showObjectNames;
+            set
+            {
+                if (value)
+                {
+                    _clearBackground = true;
+                }
+                _showObjectNames = value;
+            }
+        }
 
         public int width
         {
@@ -37,9 +76,11 @@ namespace MaxGravity
         {
             spaceObjects = new SpaceObjects();
             thread = new Thread(DrawingAnimation);
+            thread.Priority = ThreadPriority.Highest;
             handleWindows = handleBlackPanel.CreateGraphics();
             width = handleBlackPanel.Width;
             height = handleBlackPanel.Height;
+            _clearBackground = true;
         }
 
         ~GraphicsEngine()
@@ -95,7 +136,10 @@ namespace MaxGravity
                 //DrawLine(spaceObjects.GetList()[iter].c, spaceObjects.GetList()[iter].p.x, spaceObjects.GetList()[iter].p.y, spaceObjects.GetList()[iter].p.x + 6 * spaceObjects.GetList()[iter].v.vectorPoint.x, spaceObjects.GetList()[iter].p.y + 6 * spaceObjects.GetList()[iter].v.vectorPoint.y);
 
                 //drawing name object
-                //DrawText(spaceObjects.GetList()[iter].c, spaceObjects.GetList()[iter].name, spaceObjects.GetList()[iter].p.x + 13, spaceObjects.GetList()[iter].p.y - spaceObjects.GetList()[iter].r - 8);
+                if (_showObjectNames)
+                {
+                    DrawText(spaceObjects.GetList()[iter].c, spaceObjects.GetList()[iter].name, spaceObjects.GetList()[iter].p.x + 13, spaceObjects.GetList()[iter].p.y - spaceObjects.GetList()[iter].r - 8);
+                }
 
                 //drawing force vector (zoom*6)
                 //DrawLine(spaceObjects.GetList()[iter].c, spaceObjects.GetList()[iter].p.x, spaceObjects.GetList()[iter].p.y, spaceObjects.GetList()[iter].p.x + 6 * spaceObjects.GetList()[iter].forceOfGravity.vectorPoint.x, spaceObjects.GetList()[iter].p.y + 6 * spaceObjects.GetList()[iter].forceOfGravity.vectorPoint.y);
@@ -158,9 +202,17 @@ namespace MaxGravity
             }
         }
 
+        public void ClearListObject()
+        {
+            spaceObjects.Clear();
+        }
+
+        /// <summary>
+        /// External method.allows you to clean the window
+        /// </summary>
         public void Clear()
         {
-            handleWindows.Clear(Color.Black);
+            clearBackgroundOnce = true;
         }
 
         public void DrawingAnimation()
@@ -175,8 +227,15 @@ namespace MaxGravity
 
                 CalculateForceOfGravity();
                 CalculateNewPosition();
-                Thread.Sleep(5);
-                Clear();
+                Thread.Sleep(1);
+                if (_clearBackground || clearBackgroundOnce)
+                {
+                    handleWindows.Clear(Color.Black);
+                    if (clearBackgroundOnce)
+                    {
+                        clearBackgroundOnce = false;
+                    }
+                }
             }
         }
 
