@@ -45,6 +45,12 @@ namespace MaxGravity
             engine.AddSpaceObject(new SpaceObject("Ganimedes",  new Position(350, 609),     50, 1, Color.FloralWhite, new DirectionVector(0.8f, 0)));
             engine.AddSpaceObject(new SpaceObject("Kallisto",   new Position(350, 602),      1, 1, Color.FloralWhite, new DirectionVector(0.785f, 0)));
 
+            engine.AddSpaceObject(new SpaceObject("s1", new Position(350, 202), 1, 1, Color.LightGreen, new DirectionVector(-1f, 0)));
+            engine.AddSpaceObject(new SpaceObject("s2", new Position(350, 302), 1, 1, Color.LightGreen, new DirectionVector(1f, 0)));
+            engine.AddSpaceObject(new SpaceObject("s3", new Position(350, 407), 1, 1, Color.LightGreen, new DirectionVector(0.785f, 0)));
+            engine.AddSpaceObject(new SpaceObject("s4", new Position(250, 250), 1, 1, Color.LightGreen, new DirectionVector(0.385f, 0.5f)));
+            engine.AddSpaceObject(new SpaceObject("s5", new Position(470, 250), 1, 1, Color.LightGreen, new DirectionVector(0.285f, 0.13f)));
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

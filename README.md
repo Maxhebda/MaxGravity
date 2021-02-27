@@ -8,6 +8,7 @@ properties of objects:
 - mass,
 - speed, 
 - location
+
 calculated properties:
 - gravity, 
 - gravitational acceleration, 
